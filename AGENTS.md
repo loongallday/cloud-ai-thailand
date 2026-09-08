@@ -26,6 +26,7 @@ Before writing copy, CTAs, footer disclosures, or cross-links, read:
 - `lib/site.ts` is the only place a brand value is written: name, suite name, URL, tagline, CTA, legal disclosure. `lib/site-data.ts` owns every route, label, title and description. Pages read from both; they never restate a value inline.
 - Contact channels (email, LINE, phone) and the lead form come from omni's `cta.js` via `data-cta` attributes; never hardcode them in components.
 - Fully static export with `trailingSlash: true`; canonical paths end in `/`. No API routes, middleware or request-time rendering.
+- Deployed to Vercel; the folder, the GitHub repo under the `localaithai` org, and the Vercel project all use the full domain name. The Vercel project lives in the **LocalAIThai** team (slug `local-ait-hai`), is named `cloudaithai.com`, and is git-connected so every push to `main` deploys to production (`vercel --prod` from a clone still works with `--scope local-ait-hai`). `vercel.json` carries `trailingSlash` and there is no other host config.
 - Pages compose `components/site-page.tsx` (Navbar, motion wrapper, Contact, Footer) rather than rebuilding the frame.
 - Primary CTA is "Request a Demo" into the contact section. "Visit Mimir Suites" is never the primary CTA.
 - `site.legalDisclosure` stays unset until the operating entity is named. Render nothing, never a placeholder.
